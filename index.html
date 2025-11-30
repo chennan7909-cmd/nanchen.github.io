@@ -58,7 +58,6 @@
       padding: 32px 20px 64px;
     }
 
-    /* Top glow */
     .page-glow {
       position: fixed;
       inset: -200px;
@@ -155,7 +154,6 @@
       width: 100%;
     }
 
-    /* Hero layout */
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
@@ -337,7 +335,6 @@
       margin-bottom: 2px;
     }
 
-    /* Avatar side */
     .hero-right {
       display: flex;
       justify-content: center;
@@ -369,15 +366,9 @@
     }
 
     @keyframes floatCard {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-6px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
     }
 
     .avatar-wrapper {
@@ -416,7 +407,7 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background-image: url("assets/avatar.png");
+      background-image: url("avatar.jpg"); /* use your avatar file at repo root */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -506,7 +497,6 @@
       color: #e5e7eb;
     }
 
-    /* Sections */
     section {
       margin-bottom: 34px;
     }
@@ -549,7 +539,6 @@
       color: #e5e7eb;
     }
 
-    /* Projects grid */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -679,6 +668,7 @@
       align-items: center;
       font-size: 11px;
       margin-top: 6px;
+      gap: 8px;
     }
 
     .project-tags-row {
@@ -703,13 +693,13 @@
       align-items: center;
       gap: 4px;
       opacity: 0.9;
+      white-space: nowrap;
     }
 
     .project-link span.arrow {
       font-size: 12px;
     }
 
-    /* Contact / footer */
     .contact-card {
       border-radius: var(--radius-xl);
       padding: 16px 18px 14px;
@@ -826,7 +816,6 @@
           <div class="avatar-wrapper">
             <div class="avatar-halo"></div>
             <div class="avatar-ring">
-              <!-- Replace assets/avatar.png with your own photo in the repo -->
               <div class="avatar"></div>
             </div>
           </div>
@@ -905,6 +894,9 @@
               <span class="project-mini-tag">Narrative design</span>
               <span class="project-mini-tag">Sketch-first</span>
             </div>
+            <a class="project-link" href="assignment1.pdf" target="_blank" rel="noreferrer">
+              View PDF submission <span class="arrow">↗</span>
+            </a>
           </div>
         </article>
 
@@ -933,6 +925,9 @@
               <span class="project-mini-tag">Map redesign</span>
               <span class="project-mini-tag">Exploratory data story</span>
             </div>
+            <a class="project-link" href="assignment2.ipynb" target="_blank" rel="noreferrer">
+              View notebook file <span class="arrow">↗</span>
+            </a>
           </div>
         </article>
 
@@ -961,10 +956,13 @@
               <span class="project-mini-tag">Persuasion</span>
               <span class="project-mini-tag">Visual hierarchy</span>
             </div>
+            <a class="project-link" href="assignment3.pdf" target="_blank" rel="noreferrer">
+              View PDF submission <span class="arrow">↗</span>
+            </a>
           </div>
         </article>
 
-        <!-- Assignment 4 – NEW -->
+        <!-- Assignment 4 -->
         <article class="project-card" id="assignment4">
           <div class="project-top-row">
             <div>
@@ -994,6 +992,9 @@
               <span class="project-mini-tag">Youth audience</span>
               <span class="project-mini-tag">Narrative + data</span>
             </div>
+            <a class="project-link" href="assignment 4.pdf" target="_blank" rel="noreferrer">
+              View PDF submission <span class="arrow">↗</span>
+            </a>
           </div>
           <div style="font-size:11px;color:var(--muted);margin-top:6px;">
             <strong>My contribution:</strong> I introduced the analytical lens of
