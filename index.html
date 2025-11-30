@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nan Chen – Data Visualization Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Portfolio showcasing data visualization, analytics workflows, and iterative design projects."
+  />
+  <style>
+    :root {
+      --bg: #f5f6fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --max-width: 960px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e0f2fe 0, #f5f6fb 40%, #ffffff 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      width: 100%;
+      max-width: var(--max-width);
+    }
+
+    /* --- NAV --- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 8px 4px;
+    }
+
+    .nav-left {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* --- HERO --- */
+    .hero {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      padding: 24px 22px 20px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.05);
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 720px) {
+      .hero {
+        grid-template-columns: 2.2fr 1.4fr;
+        align-items: center;
+      }
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      font-size: clamp(26px, 3vw, 32px);
+      margin-bottom: 6px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-text {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-meta {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: left;
+    }
+
+    @media (min-width: 720px) {
+      .hero-meta { text-align: right; }
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    /* --- PROJECTS --- */
+    main {
+      margin-top: 20px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 880px) {
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .project-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.05);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 230px;
+    }
+
+    .project-thumb {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      background: #e5e7eb;
+      display: block;
+    }
+
+    .project-body {
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .project-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .project-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .project-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      color: #4b5563;
+    }
+
+    .project-actions {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      filter: brightness(1.02);
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="nav-left">Nan Chen</div>
+      <div class="nav-right">
+        <span>Portfolio</span>
+        <a href="mailto:chennan7909@gmail.com">Contact</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Data Visualization & Storytelling</div>
+        <h1>Selected course projects from MBAI 5200</h1>
+        <p class="hero-subtitle">
+          A compact portfolio of three assignments, highlighting narrative design,
+          interactive thinking, and infographic iteration.
+        </p>
+        <p class="hero-text">
+          My background is 12+ years in banking; this course let me turn that
+          experience into visual stories — from crypto narratives to humanoid
+          robots and model reflection.
+        </p>
+      </div>
+      <div class="hero-meta">
+        <div class="pill">Ontario Tech · MBAI</div>
+        <div>Course: Data Visualization & Storytelling</div>
+        <div>Instructor: Miedema · Fall 2025</div>
+        <div style="margin-top: 8px;">Email: <a href="mailto:chennan7909@gmail.com">chennan7909@gmail.com</a></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <main>
+      <div class="section-title">Course Projects</div>
+      <div class="projects-grid">
+        <!-- Assignment 1 -->
+        <article class="project-card">
+          <!-- 把下面 src 换成你上传的预览图文件名，例如 assignment1-preview.png -->
+          <img class="project-thumb" src="assignment1-preview.png" alt="Generation Crypto preview" />
+          <div class="project-body">
+            <div class="project-label">Assignment 1 · Narrative Data Story</div>
+            <div class="project-title">Generation Crypto: Hope, Risk, and Reality</div>
+            <p class="project-meta">
+              A human-centered story about how Gen-Z engages with cryptocurrency,
+              combining media data, personal experience, and a multi-scene comic storyboard.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Storyboarding</span>
+              <span class="tag">Quant + Qual</span>
+              <span class="tag">Comics</span>
+            </div>
+            <div class="project-actions">
+              <!-- PDF 链接：把 href 换成你上传的 PDF 文件名 -->
+              <a class="btn primary" href="assignment1.pdf" target="_blank">View PDF</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Assignment 2 -->
+        <article class="project-card">
+          <img class="project-thumb" src="assignment2-preview.png" alt="Interactive redesign preview" />
+          <div class="project-body">
+            <div class="project-label">Assignment 2 · Interactive Redesign</div>
+            <div class="project-title">From Static Graphic to Interactive Exploration</div>
+            <p class="project-meta">
+              A redesign of a classic information graphic using interactive methods.
+              The new version invites users to hover, filter, and explore layered views
+              rather than passively reading a static chart.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Interactivity</span>
+              <span class="tag">Plotly / Web</span>
+              <span class="tag">UX Thinking</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn primary" href="assignment2.ipynb" target="_blank">Download Notebook</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Assignment 3 -->
+        <article class="project-card">
+          <img class="project-thumb" src="assignment3-preview.png" alt="Humanoid robots infographic preview" />
+          <div class="project-body">
+            <div class="project-label">Assignment 3 · Infographic</div>
+            <div class="project-title">Humanoid Robots: The Next Technology Wave</div>
+            <p class="project-meta">
+              A three-iteration vertical infographic on the rise of humanoid robots,
+              visualizing funding trends, company growth, and task categories with a
+              narrow poster layout.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Infographic</span>
+              <span class="tag">Iteration 1–3</span>
+              <span class="tag">Future of Work</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn primary" href="assignment3.pdf" target="_blank">View PDF</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      © 2025 Nan Chen · Data Visualization & Storytelling · Hosted on GitHub Pages
+    </footer>
+  </div>
+</body>
+</html>
