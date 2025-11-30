@@ -2,531 +2,1032 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Nan Chen · Data Visualization Portfolio</title>
+  <title>Charlene Chen – Data Visualization Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Portfolio showcasing data visualization, analytics workflows, and iterative design projects."
+    content="Data visualization & storytelling portfolio of Charlene (Nan) Chen – Ontario Tech University MBAI."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
   />
   <style>
-    :root {
-      --bg: #020617;
-      --bg-elevated: #050b1f;
-      --bg-card: #0b1120;
-      --border-subtle: #1e293b;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.14);
-      --max-width: 1040px;
-      --radius-lg: 18px;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    :root {
+      --bg: #050814;
+      --bg-elevated: rgba(15, 23, 42, 0.95);
+      --bg-soft: rgba(15, 23, 42, 0.7);
+      --accent: #22d3ee;
+      --accent-soft: rgba(34, 211, 238, 0.18);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --radius-xl: 22px;
+      --shadow-soft: 0 18px 60px rgba(15, 23, 42, 0.9);
+      --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.7);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, #0ea5e9 0, transparent 45%),
-        radial-gradient(circle at bottom right, #22c55e 0, transparent 50%),
-        var(--bg);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #000 100%);
       color: var(--text);
-      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
-      color: var(--accent);
+      color: inherit;
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .shell {
-      max-width: var(--max-width);
+    main {
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 20px 16px 40px;
+      padding: 32px 20px 64px;
     }
 
-    /* NAV */
-    .nav {
+    /* Top glow */
+    .page-glow {
+      position: fixed;
+      inset: -200px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.05), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(34, 211, 238, 0.06), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(129, 140, 248, 0.05), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 8px 0 16px;
+      align-items: center;
+      margin-bottom: 32px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.95),
+        rgba(2, 6, 23, 0.7),
+        transparent
+      );
+      padding: 18px 0 8px;
     }
 
-    .nav-left {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .logo-dot {
-      width: 18px;
-      height: 18px;
+    .brand-mark {
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #e0f2fe, #0ea5e9 55%, #020617 100%);
-      box-shadow: 0 0 16px rgba(56, 189, 248, 0.7);
-      animation: glowPulse 2.6s ease-in-out infinite;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at 30% 0%, #22d3ee, #0f172a 65%, #020617);
+      position: relative;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), 0 0 30px rgba(34, 211, 238, 0.25);
+      overflow: hidden;
     }
 
-    .logo-text {
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.25), transparent 55%);
+      mix-blend-mode: screen;
+    }
+
+    .brand-text-main {
       font-size: 15px;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #cbd5f5;
     }
 
-    .nav-right {
+    .brand-text-sub {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    nav {
       display: flex;
       gap: 18px;
       font-size: 13px;
       color: var(--muted);
     }
 
-    .nav-link {
-      cursor: pointer;
+    nav a {
+      position: relative;
+      padding-bottom: 4px;
     }
 
-    .nav-link:hover {
-      color: var(--text);
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, #22d3ee, #38bdf8);
+      transition: width 0.2s ease;
     }
 
-    /* HERO */
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero layout */
     .hero {
-      margin-top: 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 32px;
+      margin-bottom: 40px;
+      align-items: center;
+    }
+
+    .hero-left {
+      padding: 22px 22px 20px;
+      border-radius: var(--radius-xl);
       background: linear-gradient(
           135deg,
-          rgba(15, 23, 42, 0.96),
-          rgba(15, 23, 42, 0.9)
+          rgba(15, 23, 42, 0.9),
+          rgba(15, 23, 42, 0.96)
+        ),
+        linear-gradient(
+          120deg,
+          rgba(34, 211, 238, 0.15),
+          rgba(56, 189, 248, 0.05)
         );
-      border-radius: 24px;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      padding: 28px 22px 24px;
-      display: grid;
-      gap: 18px;
-      box-shadow:
-        0 32px 80px rgba(15, 23, 42, 0.9),
-        0 0 0 1px rgba(15, 23, 42, 0.6) inset;
-      animation: fadeUp 0.8s ease-out both;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
     }
 
-    @media (min-width: 800px) {
-      .hero {
-        grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.4fr);
-        align-items: center;
-        padding: 32px 30px 26px;
-      }
+    .hero-left::before {
+      content: "";
+      position: absolute;
+      inset: -120px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.18), transparent 50%),
+        radial-gradient(circle at 100% 120%, rgba(56, 189, 248, 0.14), transparent 50%);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: -1;
     }
 
-    .hero-eyebrow {
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.95);
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: 14px;
+    }
+
+    .hero-tag span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
     }
 
     .hero-title {
-      font-size: clamp(26px, 3.1vw, 32px);
+      font-size: clamp(26px, 3vw, 30px);
       font-weight: 600;
+      line-height: 1.1;
       margin-bottom: 10px;
     }
 
-    .hero-subtitle {
-      font-size: 14px;
-      color: #cbd5f5;
-      margin-bottom: 12px;
-      max-width: 36rem;
+    .hero-highlight {
+      background: linear-gradient(120deg, #e0f2fe, #a5f3fc);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    .hero-body {
+    .hero-subtitle {
       font-size: 13px;
       color: var(--muted);
-      max-width: 36rem;
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 16px;
     }
 
-    .hero-meta {
-      font-size: 12px;
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
       color: var(--muted);
-      border-left: 1px solid rgba(148, 163, 184, 0.4);
-      padding-left: 16px;
     }
 
-    @media (max-width: 799px) {
-      .hero-meta {
-        border-left: none;
-        border-top: 1px solid rgba(148, 163, 184, 0.4);
-        padding-left: 0;
-        padding-top: 14px;
+    .pill strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 211, 238, 0.7);
+      background: radial-gradient(circle at 0% 0%, #22d3ee, #0ea5e9);
+      color: #020617;
+      font-weight: 500;
+      box-shadow: 0 14px 40px rgba(34, 211, 238, 0.5);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 55px rgba(34, 211, 238, 0.6);
+      background: radial-gradient(circle at 0% 0%, #a5f3fc, #22d3ee);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      cursor: pointer;
+      transition: border 0.15s ease, background 0.15s ease, color 0.15s ease,
+        transform 0.15s ease;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.95);
+      color: #e5e7eb;
+      transform: translateY(-1px);
+    }
+
+    .hero-metadata {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .hero-meta-item {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-meta-item span {
+      display: block;
+    }
+
+    .hero-meta-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(148, 163, 184, 0.9);
+      margin-bottom: 2px;
+    }
+
+    /* Avatar side */
+    .hero-right {
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-card {
+      width: 100%;
+      max-width: 330px;
+      border-radius: 26px;
+      padding: 18px 18px 16px;
+      background: radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.08), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.08), transparent 60%),
+        rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      animation: floatCard 9s ease-in-out infinite;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.18), transparent 55%);
+      opacity: 0.65;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    @keyframes floatCard {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+      100% {
+        transform: translateY(0px);
       }
     }
 
     .avatar-wrapper {
       display: flex;
-      justify-content: flex-end;
-      margin-bottom: 12px;
-    }
-
-    @media (max-width: 799px) {
-      .avatar-wrapper {
-        justify-content: flex-start;
-        margin-bottom: 10px;
-      }
+      justify-content: center;
+      margin-bottom: 10px;
+      position: relative;
     }
 
     .avatar-ring {
-      padding: 3px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #22d3ee, #1d4ed8 60%, transparent 100%);
-      box-shadow: 0 0 24px rgba(56, 189, 248, 0.55);
-      animation: glowPulse 3s ease-in-out infinite;
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 4px;
+      background: radial-gradient(circle at 0% 0%, #22d3ee, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar-ring::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.35), transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
+      pointer-events: none;
     }
 
     .avatar {
-      width: 76px;
-      height: 76px;
-      border-radius: 999px;
-      object-fit: cover;
-      display: block;
-      filter: saturate(1.05);
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-image: url("assets/avatar.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: saturate(1.05) contrast(1.05);
     }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 500;
-      margin-bottom: 10px;
+    .avatar-halo {
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 180deg,
+        rgba(34, 211, 238, 0.0),
+        rgba(34, 211, 238, 0.35),
+        rgba(59, 130, 246, 0.4),
+        rgba(34, 211, 238, 0.0)
+      );
+      opacity: 0.6;
+      filter: blur(16px);
+      z-index: -1;
     }
 
-    /* SECTION */
-    .section {
-      margin-top: 32px;
+    .profile-name {
+      text-align: center;
+      font-size: 17px;
+      font-weight: 600;
+      margin-top: 6px;
     }
 
-    .section-heading {
+    .profile-role {
+      text-align: center;
       font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
       color: var(--muted);
       margin-bottom: 12px;
     }
 
-    /* PROJECT GRID */
-    .grid {
+    .profile-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .profile-badge {
+      font-size: 10px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+    }
+
+    .profile-divider {
+      height: 1px;
+      border-radius: 999px;
+      background: radial-gradient(
+        90deg,
+        rgba(148, 163, 184, 0),
+        rgba(148, 163, 184, 0.9),
+        rgba(148, 163, 184, 0)
+      );
+      margin: 10px 0;
+    }
+
+    .profile-mini-stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .profile-mini-stats div span {
+      display: block;
+    }
+
+    .profile-mini-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(148, 163, 184, 0.9);
+      margin-bottom: 2px;
+    }
+
+    .profile-mini-value {
+      color: #e5e7eb;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 34px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .about-card {
+      border-radius: var(--radius-xl);
+      padding: 16px 18px 14px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-subtle);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .about-card p + p {
+      margin-top: 10px;
+    }
+
+    .about-inline {
+      color: #e5e7eb;
+    }
+
+    /* Projects grid */
+    .projects-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
     }
 
-    @media (min-width: 880px) {
-      .grid {
-        grid-template-columns: 1fr 1fr;
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right {
+        order: -1;
+      }
+      .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
     }
 
     .project-card {
-      background: radial-gradient(circle at top left, #0f172a, #020617 80%);
-      border-radius: var(--radius-lg);
+      border-radius: 20px;
+      padding: 16px 16px 14px;
+      background: radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.12), transparent 55%),
+        var(--bg-soft);
       border: 1px solid var(--border-subtle);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
-      display: flex;
-      flex-direction: column;
+      box-shadow: var(--shadow-subtle);
+      position: relative;
       overflow: hidden;
-      min-height: 220px;
-      opacity: 0;
-      transform: translateY(16px);
-      animation: fadeUp 0.8s ease-out both;
-      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out,
-        border-color 0.18s ease-out;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        border-color 0.15s ease, background 0.2s ease;
     }
 
-    .grid > .project-card:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-    .grid > .project-card:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    .grid > .project-card:nth-child(3) {
-      animation-delay: 0.3s;
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.24), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+      mix-blend-mode: soft-light;
     }
 
     .project-card:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
-      border-color: rgba(148, 163, 184, 0.9);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 55px rgba(15, 23, 42, 0.95);
+      border-color: rgba(148, 163, 184, 0.8);
+      background: radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.2), transparent 60%),
+        rgba(15, 23, 42, 0.95);
     }
 
-    .project-header {
-      padding: 13px 16px 0;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
+    .project-card:hover::before {
+      opacity: 1;
     }
 
-    .project-main {
-      padding: 4px 16px 14px;
+    .project-top-row {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
-      flex: 1;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
     .project-title {
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 2px;
     }
 
-    .project-desc {
-      font-size: 13px;
+    .project-meta {
+      font-size: 11px;
       color: var(--muted);
     }
 
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .tag {
-      font-size: 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 2px 8px;
-      color: #e5e7eb;
-    }
-
-    .project-actions {
-      margin-top: auto;
-      padding-top: 4px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .btn {
+    .project-tag {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
+      font-size: 10px;
+      padding: 4px 8px;
       border-radius: 999px;
-      font-size: 12px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: #e5e7eb;
-      text-decoration: none;
-      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.95);
+      margin-left: 8px;
     }
 
-    .btn.primary {
-      border-color: var(--accent);
-      background: linear-gradient(135deg, #0ea5e9, #22c55e);
-      color: #020617;
+    .project-body {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .project-body strong {
+      color: #e5e7eb;
       font-weight: 500;
     }
 
-    .btn:hover {
-      text-decoration: none;
-      filter: brightness(1.05);
-    }
-
-    .btn svg {
-      width: 13px;
-      height: 13px;
-    }
-
-    /* FOOTER */
-    footer {
-      margin-top: 32px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(30, 64, 175, 0.5);
+    .project-list {
+      list-style: none;
+      padding-left: 0;
       font-size: 12px;
       color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .project-list li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+    }
+
+    .project-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      margin-top: 6px;
+    }
+
+    .project-tags-row {
       display: flex;
       flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .project-mini-tag {
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+    }
+
+    .project-link {
+      font-size: 11px;
+      color: #bae6fd;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.9;
+    }
+
+    .project-link span.arrow {
+      font-size: 12px;
+    }
+
+    /* Contact / footer */
+    .contact-card {
+      border-radius: var(--radius-xl);
+      padding: 16px 18px 14px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-subtle);
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
       justify-content: space-between;
-      gap: 10px;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .contact-main {
+      max-width: 520px;
     }
 
-    @keyframes glowPulse {
-      0%, 100% {
-        box-shadow: 0 0 16px rgba(56, 189, 248, 0.5);
-      }
-      50% {
-        box-shadow: 0 0 28px rgba(56, 189, 248, 0.9);
-      }
+    .contact-main strong {
+      color: #e5e7eb;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      min-width: 180px;
+    }
+
+    .contact-links a {
+      color: #bae6fd;
+    }
+
+    footer {
+      margin-top: 18px;
+      font-size: 10px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    footer span {
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <!-- NAV -->
-    <header class="nav">
-      <div class="nav-left">
-        <div class="logo-dot"></div>
-        <div class="logo-text">Nan Chen</div>
+  <div class="page-glow"></div>
+  <main>
+    <header>
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div>
+          <div class="brand-text-main">Charlene (Nan) Chen</div>
+          <div class="brand-text-sub">Data Visualization & Storytelling</div>
+        </div>
       </div>
-      <nav class="nav-right">
-        <span class="nav-link" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'});">Work</span>
-        <a class="nav-link" href="mailto:chennan7909@gmail.com">Contact</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#work">Assignments</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <div class="hero-eyebrow">Data Visualization · Storytelling</div>
-        <h1 class="hero-title">Transforming complex data into clear, actionable insights.</h1>
-
+    <section class="hero" id="top">
+      <div class="hero-left">
+        <div class="hero-tag">
+          <span class="dot"></span>
+          <span>Ontario Tech University · MBAI · Visualization & Storytelling</span>
+        </div>
+        <h1 class="hero-title">
+          Turning complex data into
+          <span class="hero-highlight">clear, human stories.</span>
+        </h1>
         <p class="hero-subtitle">
-          I am an MBAI student at Ontario Tech University, currently pursuing my studies 
-          in Data Visualization and Storytelling. My work focuses on creating meaningful 
-          visual experiences that make complex data accessible, engaging, and grounded in 
-          real-world context.
+          I am currently an MBAI student at Ontario Tech University, pursuing my studies in
+          <span class="about-inline">Data Visualization and Storytelling</span>.
+          My work focuses on creating meaningful visual experiences that make complex data
+          accessible and engaging for different audiences, from policymakers to Gen-Z viewers.
         </p>
-
-        <p class="hero-body">
-          With a foundation in both technical analysis and design principles, I create 
-          visualizations that not only inform but also inspire action. My recent projects 
-          explore emerging technologies, financial markets, and human-centered phenomena 
-          through the lens of data — blending analytical rigor with thoughtful visual 
-          communication.
-        </p>
-      </div>
-      <div class="hero-meta">
-        <div class="avatar-wrapper">
-          <div class="avatar-ring">
-            <!-- 把你的照片命名为 avatar.jpg 放在仓库根目录 -->
-            <img src="avatar.jpg" alt="Portrait of Nan Chen" class="avatar" />
+        <div class="hero-pill-row">
+          <div class="pill"><strong>Focus:</strong>&nbsp; data stories, visual design, narrative structure</div>
+          <div class="pill"><strong>Mediums:</strong>&nbsp; dashboards, infographics, interactive &amp; vertical video</div>
+          <div class="pill"><strong>Topics:</strong>&nbsp; emerging tech, financial markets, social issues</div>
+        </div>
+        <div class="hero-cta-row">
+          <a href="#work" class="btn-primary">
+            View course assignments
+            <span>↘</span>
+          </a>
+          <a href="#contact" class="btn-ghost">
+            Get in touch
+          </a>
+        </div>
+        <div class="hero-metadata">
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Current program</span>
+            <span>MBAI, Ontario Tech University</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Course</span>
+            <span>Visualization &amp; Storytelling</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Background</span>
+            <span>12+ years in banking &amp; finance</span>
           </div>
         </div>
-        <div class="pill">Ontario Tech · MBAI</div>
-        <div>Course: Data Visualization &amp; Storytelling</div>
-        <div>Instructor: Miedema · Fall 2025</div>
-        <div style="margin-top: 10px;">Email:
-          <a href="mailto:chennan7909@gmail.com">chennan7909@gmail.com</a>
+      </div>
+
+      <div class="hero-right">
+        <div class="profile-card">
+          <div class="avatar-wrapper">
+            <div class="avatar-halo"></div>
+            <div class="avatar-ring">
+              <!-- Replace assets/avatar.png with your own photo in the repo -->
+              <div class="avatar"></div>
+            </div>
+          </div>
+          <div class="profile-name">Charlene (Nan) Chen</div>
+          <div class="profile-role">Data Visualization · Storytelling · Analytics</div>
+          <div class="profile-badge-row">
+            <div class="profile-badge">Ontario Tech · MBAI</div>
+            <div class="profile-badge">Visualization &amp; Storytelling</div>
+          </div>
+          <div class="profile-divider"></div>
+          <div class="profile-mini-stats">
+            <div>
+              <span class="profile-mini-label">Professional</span>
+              <span class="profile-mini-value">Senior Manager (Banking)</span>
+            </div>
+            <div>
+              <span class="profile-mini-label">Experience</span>
+              <span class="profile-mini-value">12+ years</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- WORK -->
-    <section id="work" class="section">
-      <div class="section-heading">Selected work</div>
-      <div class="grid">
+    <section id="about">
+      <div class="section-header">
+        <h2 class="section-title">About</h2>
+        <p class="section-subtitle">From financial data to visual stories</p>
+      </div>
+      <div class="about-card">
+        <p>
+          I create visualizations that not only inform but also encourage reflection and action.
+          With a foundation in both technical skills and design principles, I am interested in
+          how charts, layouts, typography, and narrative structure can make difficult topics
+          easier to understand.
+        </p>
+        <p>
+          Recently, my projects have explored <span class="about-inline">emerging technologies,
+          financial markets, and social phenomena</span> through the lens of data:
+          from nuclear energy and housing affordability to AI and youth employment.
+        </p>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-header">
+        <h2 class="section-title">Course Assignments</h2>
+        <p class="section-subtitle">
+          A selection of assignments from the Visualization &amp; Storytelling course.
+        </p>
+      </div>
+
+      <div class="projects-grid">
         <!-- Assignment 1 -->
-        <article class="project-card">
-          <div class="project-header">Assignment 1 · Narrative Data Story</div>
-          <div class="project-main">
-            <div class="project-title">Generation Crypto: Hope, Risk, and Reality</div>
-            <p class="project-desc">
-              A character-driven story about a Gen-Z crypto user. Combines media data,
-              survey numbers, and lived experience into a multi-panel visual narrative
-              showing excitement, risk, and long-term consequences.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Storyboarding</span>
-              <span class="tag">Quant + Qual</span>
-              <span class="tag">Narrative</span>
+        <article class="project-card" id="assignment1">
+          <div class="project-top-row">
+            <div>
+              <h3 class="project-title">Assignment 1 – Storyboard</h3>
+              <div class="project-meta">Foundational data story sketch · Hand-drawn storyboard</div>
             </div>
-            <div class="project-actions">
-              <a class="btn primary" href="assignment1.pdf" target="_blank">
-                <span>View PDF</span>
-                <svg viewBox="0 0 16 16" fill="none">
-                  <path d="M4 12L11 5M7 4H12V9" stroke="#020617" stroke-width="1.3"
-                        stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
+            <span class="project-tag">Exploratory</span>
+          </div>
+          <div class="project-body">
+            A hand-sketched storyboard that defines the narrative arc, audience, and key
+            message for a data-driven story. The focus is on pacing, scene transitions,
+            and how to gradually introduce data without overwhelming the viewer.
+          </div>
+          <ul class="project-list">
+            <li>Identified audience, purpose, and central question.</li>
+            <li>Sequenced scenes to guide attention and emotional tone.</li>
+            <li>Mapped where each visualization and annotation would appear.</li>
+          </ul>
+          <div class="project-footer">
+            <div class="project-tags-row">
+              <span class="project-mini-tag">Storyboard</span>
+              <span class="project-mini-tag">Narrative design</span>
+              <span class="project-mini-tag">Sketch-first</span>
             </div>
           </div>
         </article>
 
         <!-- Assignment 2 -->
-        <article class="project-card">
-          <div class="project-header">Assignment 2 · Interactive Redesign</div>
-          <div class="project-main">
-            <div class="project-title">From Static Graphic to Interactive Exploration</div>
-            <p class="project-desc">
-              A classic information graphic re-imagined as an interactive experience.
-              Instead of one frozen view, users explore layered data through hover states,
-              filters, and dynamic notebook-based tooling.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Interactivity</span>
-              <span class="tag">Plotly / Web</span>
-              <span class="tag">UX Thinking</span>
+        <article class="project-card" id="assignment2">
+          <div class="project-top-row">
+            <div>
+              <h3 class="project-title">Assignment 2 – Interactive Redesign</h3>
+              <div class="project-meta">From static map to interactive experience</div>
             </div>
-            <div class="project-actions">
-              <a class="btn primary" href="assignment2.ipynb" target="_blank">
-                <span>Download notebook</span>
-                <svg viewBox="0 0 16 16" fill="none">
-                  <path d="M4 9L8 13L12 9M8 3V12" stroke="#020617" stroke-width="1.3"
-                        stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
+            <span class="project-tag">Interactive</span>
+          </div>
+          <div class="project-body">
+            A redesign of an existing static visualization into an interactive experience,
+            shifting from a purely rhetorical graphic to an exploratory interface where users
+            can filter, zoom, and discover patterns on their own.
+          </div>
+          <ul class="project-list">
+            <li>Reorganized layout to support exploration instead of a single take-away.</li>
+            <li>Used interaction (hover, select, filter) to reveal detail on demand.</li>
+            <li>Applied course principles on hierarchy, colour, and annotation.</li>
+          </ul>
+          <div class="project-footer">
+            <div class="project-tags-row">
+              <span class="project-mini-tag">Interaction</span>
+              <span class="project-mini-tag">Map redesign</span>
+              <span class="project-mini-tag">Exploratory data story</span>
             </div>
           </div>
         </article>
 
         <!-- Assignment 3 -->
-        <article class="project-card">
-          <div class="project-header">Assignment 3 · Infographic</div>
-          <div class="project-main">
-            <div class="project-title">Humanoid Robots: The Next Technology Wave</div>
-            <p class="project-desc">
-              A vertical infographic visualizing funding, company activity, and robotic task
-              categories. Built over three iterations: hand sketch, mid-fidelity layout, 
-              and final visual design.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Infographic</span>
-              <span class="tag">Iteration 1–3</span>
-              <span class="tag">Future of Tech</span>
+        <article class="project-card" id="assignment3">
+          <div class="project-top-row">
+            <div>
+              <h3 class="project-title">Assignment 3 – Infographic</h3>
+              <div class="project-meta">Persuasive infographic · Single-page narrative</div>
             </div>
-            <div class="project-actions">
-              <a class="btn primary" href="assignment3.pdf" target="_blank">
-                <span>View PDF</span>
-                <svg viewBox="0 0 16 16" fill="none">
-                  <path d="M4 12L11 5M7 4H12V9" stroke="#020617" stroke-width="1.3"
-                        stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
+            <span class="project-tag">Infographic</span>
+          </div>
+          <div class="project-body">
+            A vertical infographic that combines charts, icons, and concise text to explain
+            a topical issue in a clear, persuasive way. The design emphasizes rhythm,
+            negative space, and consistent visual language.
+          </div>
+          <ul class="project-list">
+            <li>Designed a poster-like layout with clear visual hierarchy.</li>
+            <li>Used a constrained colour and type system for coherence.</li>
+            <li>Balanced data density with readability for a general audience.</li>
+          </ul>
+          <div class="project-footer">
+            <div class="project-tags-row">
+              <span class="project-mini-tag">Poster layout</span>
+              <span class="project-mini-tag">Persuasion</span>
+              <span class="project-mini-tag">Visual hierarchy</span>
             </div>
+          </div>
+        </article>
+
+        <!-- Assignment 4 – NEW -->
+        <article class="project-card" id="assignment4">
+          <div class="project-top-row">
+            <div>
+              <h3 class="project-title">Assignment 4 – The Algorithm's Grasp</h3>
+              <div class="project-meta">
+                Group project · Youth Employment &amp; Affordability in the GTA
+              </div>
+            </div>
+            <span class="project-tag">Vertical video</span>
+          </div>
+          <div class="project-body">
+            A visually dynamic, emotionally resonant vertical video concept (TikTok / Reels /
+            Shorts) exploring how AI shapes youth employment and the affordability crisis in
+            the Greater Toronto Area. The story interweaves official statistics with the
+            personal narratives of two young protagonists, making a complex issue accessible
+            to a youth-focused audience.
+          </div>
+          <ul class="project-list">
+            <li>Illustrative characters (Mark &amp; Sarah) for relatability and continuity.</li>
+            <li>Motion graphics with animated StatsCan charts and fast-paced text overlays.</li>
+            <li>Map animations contrasting downtown Toronto with outer GTA regions.</li>
+            <li>Sound design with modern music and subtle effects for key data moments.</li>
+          </ul>
+          <div class="project-footer">
+            <div class="project-tags-row">
+              <span class="project-mini-tag">AI &amp; labour markets</span>
+              <span class="project-mini-tag">Youth audience</span>
+              <span class="project-mini-tag">Narrative + data</span>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px;">
+            <strong>My contribution:</strong> I introduced the analytical lens of
+            differentiated AI impact on the job market, showing that automation risk is not
+            the same for all sectors. I helped categorise jobs into risk levels (routine /
+            low-skill vs. higher-cognitive roles), giving the project a clearer socioeconomic
+            structure and stronger analytical backbone.
           </div>
         </article>
       </div>
     </section>
 
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">Open to collaboration and feedback</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-main">
+          If you would like to discuss these projects, ask about the process behind any of the
+          visuals, or explore collaboration ideas, feel free to reach out. I am especially
+          interested in projects that combine <strong>data, design, and storytelling</strong>
+          to make complex topics more understandable for broader audiences.
+        </div>
+        <div class="contact-links">
+          <div>Email: <a href="mailto:chennan7909@gmail.com">chennan7909@gmail.com</a></div>
+          <div>GitHub: <a href="https://github.com/chennan7909-cmd" target="_blank" rel="noreferrer">github.com/chennan7909-cmd</a></div>
+        </div>
+      </div>
+    </section>
+
     <footer>
-      <span>© 2025 Nan Chen · Data Visualization & Storytelling</span>
-      <span>Hosted on GitHub Pages</span>
+      <span>© <script>document.write(new Date().getFullYear());</script> Charlene (Nan) Chen · Data Visualization &amp; Storytelling</span>
     </footer>
-  </div>
+  </main>
 </body>
 </html>
