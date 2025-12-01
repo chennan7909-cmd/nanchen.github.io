@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Charlene Chen – Data Visualization Portfolio</title>
+  <title>Nan Chen – Data Visualization Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Data visualization & storytelling portfolio of Charlene (Nan) Chen – Ontario Tech University MBAI."
+    content="Data visualization & storytelling portfolio of Nan Chen – Ontario Tech University MBAI."
   />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -335,166 +335,9 @@
       margin-bottom: 2px;
     }
 
+    /* 右侧保持空白 */
     .hero-right {
-      display: flex;
-      justify-content: center;
-    }
-
-    .profile-card {
-      width: 100%;
-      max-width: 330px;
-      border-radius: 26px;
-      padding: 18px 18px 16px;
-      background: radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.08), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.08), transparent 60%),
-        rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-      animation: floatCard 9s ease-in-out infinite;
-    }
-
-    .profile-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.18), transparent 55%);
-      opacity: 0.65;
-      mix-blend-mode: soft-light;
-      pointer-events: none;
-    }
-
-    @keyframes floatCard {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-      100% { transform: translateY(0px); }
-    }
-
-    .avatar-wrapper {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    .avatar-ring {
-      width: 132px;
-      height: 132px;
-      border-radius: 50%;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      padding: 4px;
-      background: radial-gradient(circle at 0% 0%, #22d3ee, #0f172a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .avatar-ring::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.35), transparent 60%);
-      mix-blend-mode: screen;
-      opacity: 0.8;
-      pointer-events: none;
-    }
-
-    .avatar {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background-image: url("avatar.jpg"); /* use your avatar file at repo root */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      filter: saturate(1.05) contrast(1.05);
-    }
-
-    .avatar-halo {
-      position: absolute;
-      inset: -10px;
-      border-radius: 50%;
-      background: conic-gradient(
-        from 180deg,
-        rgba(34, 211, 238, 0.0),
-        rgba(34, 211, 238, 0.35),
-        rgba(59, 130, 246, 0.4),
-        rgba(34, 211, 238, 0.0)
-      );
-      opacity: 0.6;
-      filter: blur(16px);
-      z-index: -1;
-    }
-
-    .profile-name {
-      text-align: center;
-      font-size: 17px;
-      font-weight: 600;
-      margin-top: 6px;
-    }
-
-    .profile-role {
-      text-align: center;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .profile-badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    .profile-badge {
-      font-size: 10px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--muted);
-    }
-
-    .profile-divider {
-      height: 1px;
-      border-radius: 999px;
-      background: radial-gradient(
-        90deg,
-        rgba(148, 163, 184, 0),
-        rgba(148, 163, 184, 0.9),
-        rgba(148, 163, 184, 0)
-      );
-      margin: 10px 0;
-    }
-
-    .profile-mini-stats {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .profile-mini-stats div span {
-      display: block;
-    }
-
-    .profile-mini-label {
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: rgba(148, 163, 184, 0.9);
-      margin-bottom: 2px;
-    }
-
-    .profile-mini-value {
-      color: #e5e7eb;
+      min-height: 220px;
     }
 
     section {
@@ -550,7 +393,7 @@
         grid-template-columns: minmax(0, 1fr);
       }
       .hero-right {
-        order: -1;
+        display: none;
       }
       .projects-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -754,7 +597,7 @@
       <div class="brand">
         <div class="brand-mark"></div>
         <div>
-          <div class="brand-text-main">Charlene (Nan) Chen</div>
+          <div class="brand-text-main">Nan Chen</div>
           <div class="brand-text-sub">Data Visualization & Storytelling</div>
         </div>
       </div>
@@ -811,33 +654,8 @@
         </div>
       </div>
 
-      <div class="hero-right">
-        <div class="profile-card">
-          <div class="avatar-wrapper">
-            <div class="avatar-halo"></div>
-            <div class="avatar-ring">
-              <div class="avatar"></div>
-            </div>
-          </div>
-          <div class="profile-name">Charlene (Nan) Chen</div>
-          <div class="profile-role">Data Visualization · Storytelling · Analytics</div>
-          <div class="profile-badge-row">
-            <div class="profile-badge">Ontario Tech · MBAI</div>
-            <div class="profile-badge">Visualization &amp; Storytelling</div>
-          </div>
-          <div class="profile-divider"></div>
-          <div class="profile-mini-stats">
-            <div>
-              <span class="profile-mini-label">Professional</span>
-              <span class="profile-mini-value">Senior Manager (Banking)</span>
-            </div>
-            <div>
-              <span class="profile-mini-label">Experience</span>
-              <span class="profile-mini-value">12+ years</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- 右侧保留为空白列 -->
+      <div class="hero-right"></div>
     </section>
 
     <section id="about">
@@ -1027,7 +845,7 @@
     </section>
 
     <footer>
-      <span>© <script>document.write(new Date().getFullYear());</script> Charlene (Nan) Chen · Data Visualization &amp; Storytelling</span>
+      <span>© <script>document.write(new Date().getFullYear());</script> Nan Chen · Data Visualization &amp; Storytelling</span>
     </footer>
   </main>
 </body>
