@@ -15,11 +15,7 @@
     rel="stylesheet"
   />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #050814;
@@ -35,9 +31,7 @@
       --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.7);
     }
 
-    html, body {
-      height: 100%;
-    }
+    html, body { height: 100%; }
 
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
@@ -47,10 +41,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     main {
       max-width: 1120px;
@@ -88,510 +79,170 @@
       padding: 18px 0 8px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .brand { display: flex; align-items: center; gap: 10px; }
 
     .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
+      width: 34px; height: 34px; border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.35);
       background: radial-gradient(circle at 30% 0%, #22d3ee, #0f172a 65%, #020617);
-      position: relative;
       box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), 0 0 30px rgba(34, 211, 238, 0.25);
-      overflow: hidden;
-    }
-
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.25), transparent 55%);
-      mix-blend-mode: screen;
+      position: relative;
     }
 
     .brand-text-main {
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-size: 15px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
     }
 
     .brand-text-sub {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      font-size: 11px; color: var(--muted);
+      letter-spacing: 0.18em; text-transform: uppercase;
     }
 
     nav {
-      display: flex;
-      gap: 18px;
-      font-size: 13px;
-      color: var(--muted);
+      display: flex; gap: 18px; font-size: 13px; color: var(--muted);
     }
 
-    nav a {
-      position: relative;
-      padding-bottom: 4px;
-    }
+    nav a { position: relative; padding-bottom: 4px; }
 
     nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
+      content: ""; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px;
       background: linear-gradient(90deg, #22d3ee, #38bdf8);
-      transition: width 0.2s ease;
+      transition: 0.2s;
     }
+    nav a:hover::after { width: 100%; }
 
-    nav a:hover::after {
-      width: 100%;
-    }
-
+    /* HERO GRID */
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
-      gap: 32px;
-      margin-bottom: 40px;
-      align-items: center;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 32px; margin-bottom: 40px; align-items: center;
     }
 
     .hero-left {
-      padding: 22px 22px 20px;
-      border-radius: var(--radius-xl);
+      padding: 22px; border-radius: var(--radius-xl);
       background: linear-gradient(
-          135deg,
-          rgba(15, 23, 42, 0.9),
-          rgba(15, 23, 42, 0.96)
-        ),
-        linear-gradient(
-          120deg,
-          rgba(34, 211, 238, 0.15),
-          rgba(56, 189, 248, 0.05)
-        );
-      border: 1px solid rgba(148, 163, 184, 0.4);
+          135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96)),
+        linear-gradient(120deg, rgba(34,211,238,.15), rgba(56,189,248,.05));
+      border: 1px solid rgba(148,163,184,0.4);
       box-shadow: var(--shadow-soft);
       position: relative;
-      overflow: hidden;
-    }
-
-    .hero-left::before {
-      content: "";
-      position: absolute;
-      inset: -120px;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.18), transparent 50%),
-        radial-gradient(circle at 100% 120%, rgba(56, 189, 248, 0.14), transparent 50%);
-      opacity: 0.7;
-      pointer-events: none;
-      z-index: -1;
     }
 
     .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      padding: 4px 9px;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; padding: 4px 9px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--muted);
-      margin-bottom: 14px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.95);
+      color: var(--muted); margin-bottom: 14px;
     }
 
-    .hero-tag span.dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
-    }
-
-    .hero-title {
-      font-size: clamp(26px, 3vw, 30px);
-      font-weight: 600;
-      line-height: 1.1;
-      margin-bottom: 10px;
-    }
+    .hero-title { font-size: 30px; font-weight: 600; line-height: 1.2; }
 
     .hero-highlight {
-      background: linear-gradient(120deg, #e0f2fe, #a5f3fc);
-      -webkit-background-clip: text;
-      color: transparent;
+      background: linear-gradient(120deg,#e0f2fe,#a5f3fc);
+      -webkit-background-clip: text; color: transparent;
     }
 
-    .hero-subtitle {
-      font-size: 13px;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
+    .hero-subtitle { font-size: 13px; color: var(--muted); margin-top: 6px; }
 
-    .hero-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
+    /* ----------- 头像卡片（保留） ----------- */
 
-    .pill {
-      font-size: 11px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--muted);
-    }
-
-    .pill strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-top: 6px;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(34, 211, 238, 0.7);
-      background: radial-gradient(circle at 0% 0%, #22d3ee, #0ea5e9);
-      color: #020617;
-      font-weight: 500;
-      box-shadow: 0 14px 40px rgba(34, 211, 238, 0.5);
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease,
-        background 0.15s ease;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 55px rgba(34, 211, 238, 0.6);
-      background: radial-gradient(circle at 0% 0%, #a5f3fc, #22d3ee);
-    }
-
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--muted);
-      cursor: pointer;
-      transition: border 0.15s ease, background 0.15s ease, color 0.15s ease,
-        transform 0.15s ease;
-    }
-
-    .btn-ghost:hover {
-      border-color: rgba(148, 163, 184, 0.8);
-      background: rgba(15, 23, 42, 0.95);
-      color: #e5e7eb;
-      transform: translateY(-1px);
-    }
-
-    .hero-metadata {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 18px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(148, 163, 184, 0.4);
-    }
-
-    .hero-meta-item {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .hero-meta-item span {
-      display: block;
-    }
-
-    .hero-meta-label {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(148, 163, 184, 0.9);
-      margin-bottom: 2px;
-    }
-
-    /* 右侧保持空白 */
     .hero-right {
-      min-height: 220px;
+      display: flex; justify-content: center;
     }
 
-    section {
-      margin-bottom: 34px;
+    .profile-card {
+      width: 100%; max-width: 330px;
+      border-radius: 26px;
+      padding: 18px;
+      background: rgba(15,23,42,.96);
+      border: 1px solid rgba(148,163,184,0.45);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      animation: floatCard 9s ease-in-out infinite;
     }
 
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 14px;
+    @keyframes floatCard {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
     }
 
-    .section-title {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(148, 163, 184, 0.9);
+    .avatar-wrapper { display: flex; justify-content: center; margin-bottom: 12px; }
+
+    .avatar-ring {
+      width: 132px; height: 132px; border-radius: 999px;
+      background: radial-gradient(circle at 0% 0%, #22d3ee, #0f172a);
+      padding: 4px; display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(148,163,184,0.6);
+      position: relative;
     }
 
-    .section-subtitle {
-      font-size: 12px;
-      color: var(--muted);
+    .avatar {
+      width: 100%; height: 100%; border-radius: 999px;
+      background-image: url("avatar.jpg");
+      background-size: cover; background-position: center;
     }
 
-    .about-card {
-      border-radius: var(--radius-xl);
-      padding: 16px 18px 14px;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-subtle);
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
+    .profile-name {
+      text-align:center; font-size:17px; font-weight:600;
+      margin-top:4px; margin-bottom:6px;
     }
 
-    .about-card p + p {
-      margin-top: 10px;
-    }
+    /* ❗ 已移除职位/年限：不再显示任何内容 */
+    .profile-mini-stats { display:none; } /* removed */
 
-    .about-inline {
-      color: #e5e7eb;
-    }
+    /* ----------- Section layouts remain unchanged ----------- */
+
+    section { margin-top: 40px; }
 
     .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap:16px;
     }
 
-    @media (max-width: 840px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-right {
-        display: none;
-      }
-      .projects-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
+    @media (max-width:840px) {
+      .hero { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
 
     .project-card {
+      background: var(--bg-soft);
       border-radius: 20px;
-      padding: 16px 16px 14px;
-      background: radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.12), transparent 55%),
-        var(--bg-soft);
       border: 1px solid var(--border-subtle);
+      padding: 16px;
       box-shadow: var(--shadow-subtle);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.15s ease, box-shadow 0.15s ease,
-        border-color 0.15s ease, background 0.2s ease;
     }
 
-    .project-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.24), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      pointer-events: none;
-      mix-blend-mode: soft-light;
-    }
-
-    .project-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 55px rgba(15, 23, 42, 0.95);
-      border-color: rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.2), transparent 60%),
-        rgba(15, 23, 42, 0.95);
-    }
-
-    .project-card:hover::before {
-      opacity: 1;
-    }
-
-    .project-top-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .project-title {
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 2px;
-    }
-
-    .project-meta {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .project-tag {
-      display: inline-flex;
-      align-items: center;
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.95);
-      margin-left: 8px;
-    }
-
-    .project-body {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    .project-body strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .project-list {
-      list-style: none;
-      padding-left: 0;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .project-list li {
-      position: relative;
-      padding-left: 14px;
-      margin-bottom: 4px;
-    }
-
-    .project-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: rgba(148, 163, 184, 0.9);
-    }
+    .project-title { font-size:14px; font-weight:600; }
 
     .project-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      margin-top: 6px;
-      gap: 8px;
-    }
-
-    .project-tags-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .project-mini-tag {
-      font-size: 10px;
-      padding: 3px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--muted);
+      display:flex; justify-content:space-between; align-items:center;
+      margin-top:8px;
     }
 
     .project-link {
-      font-size: 11px;
-      color: #bae6fd;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      opacity: 0.9;
-      white-space: nowrap;
-    }
-
-    .project-link span.arrow {
-      font-size: 12px;
+      font-size:12px; color:#bae6fd; display:flex; gap:4px;
     }
 
     .contact-card {
-      border-radius: var(--radius-xl);
-      padding: 16px 18px 14px;
       background: var(--bg-elevated);
       border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-subtle);
-      font-size: 13px;
-      color: var(--muted);
+      border-radius: var(--radius-xl);
+      padding: 20px;
       display: flex;
       justify-content: space-between;
-      gap: 18px;
       flex-wrap: wrap;
-      align-items: center;
+      gap: 12px;
     }
 
-    .contact-main {
-      max-width: 520px;
-    }
-
-    .contact-main strong {
-      color: #e5e7eb;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 12px;
-      min-width: 180px;
-    }
-
-    .contact-links a {
-      color: #bae6fd;
-    }
-
-    footer {
-      margin-top: 18px;
-      font-size: 10px;
-      color: var(--muted);
-      text-align: right;
-    }
-
-    footer span {
-      opacity: 0.7;
-    }
   </style>
 </head>
 <body>
   <div class="page-glow"></div>
+
   <main>
     <header>
       <div class="brand">
@@ -608,245 +259,108 @@
       </nav>
     </header>
 
+    <!-- HERO -->
     <section class="hero" id="top">
       <div class="hero-left">
-        <div class="hero-tag">
-          <span class="dot"></span>
-          <span>Ontario Tech University · MBAI · Visualization & Storytelling</span>
-        </div>
-        <h1 class="hero-title">
-          Turning complex data into
+        <div class="hero-tag"><span class="dot"></span> Ontario Tech University · MBAI · Visualization & Storytelling</div>
+
+        <h1 class="hero-title">Turning complex data into
           <span class="hero-highlight">clear, human stories.</span>
         </h1>
+
         <p class="hero-subtitle">
-          I am currently an MBAI student at Ontario Tech University, pursuing my studies in
-          <span class="about-inline">Data Visualization and Storytelling</span>.
-          My work focuses on creating meaningful visual experiences that make complex data
-          accessible and engaging for different audiences, from policymakers to Gen-Z viewers.
+          I am currently an MBAI student at Ontario Tech University. My work focuses on creating meaningful
+          visual experiences that make complex data accessible and engaging.
         </p>
-        <div class="hero-pill-row">
-          <div class="pill"><strong>Focus:</strong>&nbsp; data stories, visual design, narrative structure</div>
-          <div class="pill"><strong>Mediums:</strong>&nbsp; dashboards, infographics, interactive &amp; vertical video</div>
-          <div class="pill"><strong>Topics:</strong>&nbsp; emerging tech, financial markets, social issues</div>
-        </div>
-        <div class="hero-cta-row">
-          <a href="#work" class="btn-primary">
-            View course assignments
-            <span>↘</span>
-          </a>
-          <a href="#contact" class="btn-ghost">
-            Get in touch
-          </a>
-        </div>
-        <div class="hero-metadata">
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Current program</span>
-            <span>MBAI, Ontario Tech University</span>
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Course</span>
-            <span>Visualization &amp; Storytelling</span>
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Background</span>
-            <span>12+ years in banking &amp; finance</span>
-          </div>
-        </div>
       </div>
 
-      <!-- 右侧保留为空白列 -->
-      <div class="hero-right"></div>
+      <!-- 保留头像卡片 -->
+      <div class="hero-right">
+        <div class="profile-card">
+          <div class="avatar-wrapper">
+            <div class="avatar-ring"><div class="avatar"></div></div>
+          </div>
+
+          <div class="profile-name">Nan Chen</div>
+
+          <!-- 职位/经验已删除 -->
+          <!-- removed -->
+        </div>
+      </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about">
-      <div class="section-header">
-        <h2 class="section-title">About</h2>
-        <p class="section-subtitle">From financial data to visual stories</p>
-      </div>
+      <h2 class="section-title">About</h2>
       <div class="about-card">
-        <p>
-          I create visualizations that not only inform but also encourage reflection and action.
-          With a foundation in both technical skills and design principles, I am interested in
-          how charts, layouts, typography, and narrative structure can make difficult topics
-          easier to understand.
-        </p>
-        <p>
-          Recently, my projects have explored <span class="about-inline">emerging technologies,
-          financial markets, and social phenomena</span> through the lens of data:
-          from nuclear energy and housing affordability to AI and youth employment.
-        </p>
+        I create visualizations that connect data with human stories.
+        My projects explore emerging tech, financial markets, and social issues.
       </div>
     </section>
 
+    <!-- WORK -->
     <section id="work">
-      <div class="section-header">
-        <h2 class="section-title">Course Assignments</h2>
-        <p class="section-subtitle">
-          A selection of assignments from the Visualization &amp; Storytelling course.
-        </p>
-      </div>
+      <h2 class="section-title">Course Assignments</h2>
 
       <div class="projects-grid">
-        <!-- Assignment 1 -->
-        <article class="project-card" id="assignment1">
-          <div class="project-top-row">
-            <div>
-              <h3 class="project-title">Assignment 1 – Storyboard</h3>
-              <div class="project-meta">Foundational data story sketch · Hand-drawn storyboard</div>
-            </div>
-            <span class="project-tag">Exploratory</span>
-          </div>
-          <div class="project-body">
-            A hand-sketched storyboard that defines the narrative arc, audience, and key
-            message for a data-driven story. The focus is on pacing, scene transitions,
-            and how to gradually introduce data without overwhelming the viewer.
-          </div>
-          <ul class="project-list">
-            <li>Identified audience, purpose, and central question.</li>
-            <li>Sequenced scenes to guide attention and emotional tone.</li>
-            <li>Mapped where each visualization and annotation would appear.</li>
-          </ul>
+
+        <!-- A1 -->
+        <article class="project-card">
+          <h3 class="project-title">Assignment 1 – Storyboard</h3>
+          <p class="project-meta">Hand-drawn narrative structure</p>
           <div class="project-footer">
-            <div class="project-tags-row">
-              <span class="project-mini-tag">Storyboard</span>
-              <span class="project-mini-tag">Narrative design</span>
-              <span class="project-mini-tag">Sketch-first</span>
-            </div>
-            <a class="project-link" href="assignment1.pdf" target="_blank" rel="noreferrer">
-              View PDF submission <span class="arrow">↗</span>
-            </a>
+            <div class="project-tags-row"></div>
+            <a class="project-link" href="assignment1.pdf" target="_blank">View PDF ↗</a>
           </div>
         </article>
 
-        <!-- Assignment 2 -->
-        <article class="project-card" id="assignment2">
-          <div class="project-top-row">
-            <div>
-              <h3 class="project-title">Assignment 2 – Interactive Redesign</h3>
-              <div class="project-meta">From static map to interactive experience</div>
-            </div>
-            <span class="project-tag">Interactive</span>
-          </div>
-          <div class="project-body">
-            A redesign of an existing static visualization into an interactive experience,
-            shifting from a purely rhetorical graphic to an exploratory interface where users
-            can filter, zoom, and discover patterns on their own.
-          </div>
-          <ul class="project-list">
-            <li>Reorganized layout to support exploration instead of a single take-away.</li>
-            <li>Used interaction (hover, select, filter) to reveal detail on demand.</li>
-            <li>Applied course principles on hierarchy, colour, and annotation.</li>
-          </ul>
+        <!-- A2 -->
+        <article class="project-card">
+          <h3 class="project-title">Assignment 2 – Interactive Redesign</h3>
+          <p class="project-meta">Turning static visuals into interactive exploration</p>
           <div class="project-footer">
-            <div class="project-tags-row">
-              <span class="project-mini-tag">Interaction</span>
-              <span class="project-mini-tag">Map redesign</span>
-              <span class="project-mini-tag">Exploratory data story</span>
-            </div>
-            <a class="project-link" href="assignment2.ipynb" target="_blank" rel="noreferrer">
-              View notebook file <span class="arrow">↗</span>
-            </a>
+            <a class="project-link" href="assignment2.ipynb" target="_blank">View Notebook ↗</a>
           </div>
         </article>
 
-        <!-- Assignment 3 -->
-        <article class="project-card" id="assignment3">
-          <div class="project-top-row">
-            <div>
-              <h3 class="project-title">Assignment 3 – Infographic</h3>
-              <div class="project-meta">Persuasive infographic · Single-page narrative</div>
-            </div>
-            <span class="project-tag">Infographic</span>
-          </div>
-          <div class="project-body">
-            A vertical infographic that combines charts, icons, and concise text to explain
-            a topical issue in a clear, persuasive way. The design emphasizes rhythm,
-            negative space, and consistent visual language.
-          </div>
-          <ul class="project-list">
-            <li>Designed a poster-like layout with clear visual hierarchy.</li>
-            <li>Used a constrained colour and type system for coherence.</li>
-            <li>Balanced data density with readability for a general audience.</li>
-          </ul>
+        <!-- A3 -->
+        <article class="project-card">
+          <h3 class="project-title">Assignment 3 – Infographic</h3>
+          <p class="project-meta">Single-page persuasive narrative</p>
           <div class="project-footer">
-            <div class="project-tags-row">
-              <span class="project-mini-tag">Poster layout</span>
-              <span class="project-mini-tag">Persuasion</span>
-              <span class="project-mini-tag">Visual hierarchy</span>
-            </div>
-            <a class="project-link" href="assignment3.pdf" target="_blank" rel="noreferrer">
-              View PDF submission <span class="arrow">↗</span>
-            </a>
+            <a class="project-link" href="assignment3.pdf" target="_blank">View PDF ↗</a>
           </div>
         </article>
 
-        <!-- Assignment 4 -->
-        <article class="project-card" id="assignment4">
-          <div class="project-top-row">
-            <div>
-              <h3 class="project-title">Assignment 4 – The Algorithm's Grasp</h3>
-              <div class="project-meta">
-                Group project · Youth Employment &amp; Affordability in the GTA
-              </div>
-            </div>
-            <span class="project-tag">Vertical video</span>
-          </div>
-          <div class="project-body">
-            A visually dynamic, emotionally resonant vertical video concept (TikTok / Reels /
-            Shorts) exploring how AI shapes youth employment and the affordability crisis in
-            the Greater Toronto Area. The story interweaves official statistics with the
-            personal narratives of two young protagonists, making a complex issue accessible
-            to a youth-focused audience.
-          </div>
-          <ul class="project-list">
-            <li>Illustrative characters (Mark &amp; Sarah) for relatability and continuity.</li>
-            <li>Motion graphics with animated StatsCan charts and fast-paced text overlays.</li>
-            <li>Map animations contrasting downtown Toronto with outer GTA regions.</li>
-            <li>Sound design with modern music and subtle effects for key data moments.</li>
-          </ul>
+        <!-- A4 -->
+        <article class="project-card">
+          <h3 class="project-title">Assignment 4 – The Algorithm's Grasp</h3>
+          <p class="project-meta">Youth, AI, and affordability in the GTA</p>
           <div class="project-footer">
-            <div class="project-tags-row">
-              <span class="project-mini-tag">AI &amp; labour markets</span>
-              <span class="project-mini-tag">Youth audience</span>
-              <span class="project-mini-tag">Narrative + data</span>
-            </div>
-            <a class="project-link" href="assignment 4.pdf" target="_blank" rel="noreferrer">
-              View PDF submission <span class="arrow">↗</span>
-            </a>
-          </div>
-          <div style="font-size:11px;color:var(--muted);margin-top:6px;">
-            <strong>My contribution:</strong> I introduced the analytical lens of
-            differentiated AI impact on the job market, showing that automation risk is not
-            the same for all sectors. I helped categorise jobs into risk levels (routine /
-            low-skill vs. higher-cognitive roles), giving the project a clearer socioeconomic
-            structure and stronger analytical backbone.
+            <a class="project-link" href="assignment 4.pdf" target="_blank">View PDF ↗</a>
           </div>
         </article>
+
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact">
-      <div class="section-header">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-subtitle">Open to collaboration and feedback</p>
-      </div>
+      <h2 class="section-title">Contact</h2>
       <div class="contact-card">
-        <div class="contact-main">
-          If you would like to discuss these projects, ask about the process behind any of the
-          visuals, or explore collaboration ideas, feel free to reach out. I am especially
-          interested in projects that combine <strong>data, design, and storytelling</strong>
-          to make complex topics more understandable for broader audiences.
+        <div>
+          Email: <a href="mailto:chennan7909@gmail.com">chennan7909@gmail.com</a>
         </div>
-        <div class="contact-links">
-          <div>Email: <a href="mailto:chennan7909@gmail.com">chennan7909@gmail.com</a></div>
-          <div>GitHub: <a href="https://github.com/chennan7909-cmd" target="_blank" rel="noreferrer">github.com/chennan7909-cmd</a></div>
+        <div>
+          GitHub: <a href="https://github.com/chennan7909-cmd" target="_blank">github.com/chennan7909-cmd</a>
         </div>
       </div>
     </section>
 
     <footer>
-      <span>© <script>document.write(new Date().getFullYear());</script> Nan Chen · Data Visualization &amp; Storytelling</span>
+      © <script>document.write(new Date().getFullYear());</script> Nan Chen
     </footer>
+
   </main>
 </body>
 </html>
