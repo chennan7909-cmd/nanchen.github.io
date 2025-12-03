@@ -1,366 +1,55 @@
+<!-- Updated index.html with corrected Assignment 1 title -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Nan Chen – Data Visualization Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Data visualization & storytelling portfolio of Nan Chen – Ontario Tech University MBAI."
-  />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #050814;
-      --bg-elevated: rgba(15, 23, 42, 0.95);
-      --bg-soft: rgba(15, 23, 42, 0.7);
-      --accent: #22d3ee;
-      --accent-soft: rgba(34, 211, 238, 0.18);
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.25);
-      --radius-xl: 22px;
-      --shadow-soft: 0 18px 60px rgba(15, 23, 42, 0.9);
-      --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.7);
-    }
-
-    html, body { height: 100%; }
-
-    body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #000 100%);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 32px 20px 64px;
-    }
-
-    .page-glow {
-      position: fixed;
-      inset: -200px;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.05), transparent 55%),
-        radial-gradient(circle at 100% 0%, rgba(34, 211, 238, 0.06), transparent 55%),
-        radial-gradient(circle at 50% 100%, rgba(129, 140, 248, 0.05), transparent 55%);
-      opacity: 0.9;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 32px;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(
-        to bottom,
-        rgba(2, 6, 23, 0.95),
-        rgba(2, 6, 23, 0.7),
-        transparent
-      );
-      padding: 18px 0 8px;
-    }
-
-    .brand { display: flex; align-items: center; gap: 10px; }
-
-    .brand-mark {
-      width: 34px; height: 34px; border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at 30% 0%, #22d3ee, #0f172a 65%, #020617);
-      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), 0 0 30px rgba(34, 211, 238, 0.25);
-      position: relative;
-    }
-
-    .brand-text-main {
-      font-size: 15px; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-    }
-
-    .brand-text-sub {
-      font-size: 11px; color: var(--muted);
-      letter-spacing: 0.18em; text-transform: uppercase;
-    }
-
-    nav {
-      display: flex; gap: 18px; font-size: 13px; color: var(--muted);
-    }
-
-    nav a { position: relative; padding-bottom: 4px; }
-
-    nav a::after {
-      content: ""; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 1px;
-      background: linear-gradient(90deg, #22d3ee, #38bdf8);
-      transition: 0.2s;
-    }
-    nav a:hover::after { width: 100%; }
-
-    /* HERO GRID */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
-      gap: 32px; margin-bottom: 40px; align-items: center;
-    }
-
-    .hero-left {
-      padding: 22px; border-radius: var(--radius-xl);
-      background: linear-gradient(
-          135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96)),
-        linear-gradient(120deg, rgba(34,211,238,.15), rgba(56,189,248,.05));
-      border: 1px solid rgba(148,163,184,0.4);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-    }
-
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 11px; padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: rgba(15,23,42,0.95);
-      color: var(--muted); margin-bottom: 14px;
-    }
-
-    .hero-title { font-size: 30px; font-weight: 600; line-height: 1.2; }
-
-    .hero-highlight {
-      background: linear-gradient(120deg,#e0f2fe,#a5f3fc);
-      -webkit-background-clip: text; color: transparent;
-    }
-
-    .hero-subtitle { font-size: 13px; color: var(--muted); margin-top: 6px; }
-
-    /* ----------- 头像卡片（保留） ----------- */
-
-    .hero-right {
-      display: flex; justify-content: center;
-    }
-
-    .profile-card {
-      width: 100%; max-width: 330px;
-      border-radius: 26px;
-      padding: 18px;
-      background: rgba(15,23,42,.96);
-      border: 1px solid rgba(148,163,184,0.45);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      animation: floatCard 9s ease-in-out infinite;
-    }
-
-    @keyframes floatCard {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(-6px); }
-      100% { transform: translateY(0); }
-    }
-
-    .avatar-wrapper { display: flex; justify-content: center; margin-bottom: 12px; }
-
-    .avatar-ring {
-      width: 132px; height: 132px; border-radius: 999px;
-      background: radial-gradient(circle at 0% 0%, #22d3ee, #0f172a);
-      padding: 4px; display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(148,163,184,0.6);
-      position: relative;
-    }
-
-    .avatar {
-      width: 100%; height: 100%; border-radius: 999px;
-      background-image: url("avatar.jpg");
-      background-size: cover; background-position: center;
-    }
-
-    .profile-name {
-      text-align:center; font-size:17px; font-weight:600;
-      margin-top:4px; margin-bottom:6px;
-    }
-
-    /* ❗ 已移除职位/年限：不再显示任何内容 */
-    .profile-mini-stats { display:none; } /* removed */
-
-    /* ----------- Section layouts remain unchanged ----------- */
-
-    section { margin-top: 40px; }
-
-    .projects-grid {
-      display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap:16px;
-    }
-
-    @media (max-width:840px) {
-      .hero { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-    }
-
-    .project-card {
-      background: var(--bg-soft);
-      border-radius: 20px;
-      border: 1px solid var(--border-subtle);
-      padding: 16px;
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .project-title { font-size:14px; font-weight:600; }
-
-    .project-footer {
-      display:flex; justify-content:space-between; align-items:center;
-      margin-top:8px;
-    }
-
-    .project-link {
-      font-size:12px; color:#bae6fd; display:flex; gap:4px;
-    }
-
-    .contact-card {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-xl);
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nan Chen Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 </head>
-<body>
-  <div class="page-glow"></div>
+<body class="bg-gray-50 text-gray-800">
+  <header class="p-8 text-center">
+    <h1 class="text-4xl font-bold">Nan Chen</h1>
+    <p class="mt-2 text-lg">MBAI Student at Ontario Tech University<br />
+    Focusing on Data Visualization & Storytelling</p>
+  </header>
 
-  <main>
-    <header>
-      <div class="brand">
-        <div class="brand-mark"></div>
-        <div>
-          <div class="brand-text-main">Nan Chen</div>
-          <div class="brand-text-sub">Data Visualization & Storytelling</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#work">Assignments</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+  <main class="max-w-4xl mx-auto p-6 space-y-10">
 
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero-left">
-        <div class="hero-tag"><span class="dot"></span> Ontario Tech University · MBAI · Visualization & Storytelling</div>
-
-        <h1 class="hero-title">Turning complex data into
-          <span class="hero-highlight">clear, human stories.</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          I am currently an MBAI student at Ontario Tech University. My work focuses on creating meaningful
-          visual experiences that make complex data accessible and engaging.
-        </p>
-      </div>
-
-      <!-- 保留头像卡片 -->
-      <div class="hero-right">
-        <div class="profile-card">
-          <div class="avatar-wrapper">
-            <div class="avatar-ring"><div class="avatar"></div></div>
-          </div>
-
-          <div class="profile-name">Nan Chen</div>
-
-          <!-- 职位/经验已删除 -->
-          <!-- removed -->
-        </div>
-      </div>
+    <!-- Assignment 1 -->
+    <section class="bg-white shadow-lg p-6 rounded-2xl">
+      <h2 class="text-2xl font-semibold mb-4">Assignment 1: Generation Crypto: Hope, Risk, and Reality</h2>
+      <p class="mb-4">Exploring Gen-Z’s relationship with cryptocurrency — motivations, fears, and how digital finance shapes youth identity.</p>
+      <a href="assignment1.html" class="text-blue-600 underline">View Assignment →</a>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <h2 class="section-title">About</h2>
-      <div class="about-card">
-        I create visualizations that connect data with human stories.
-        My projects explore emerging tech, financial markets, and social issues.
-      </div>
+    <!-- Assignment 2 -->
+    <section class="bg-white shadow-lg p-6 rounded-2xl">
+      <h2 class="text-2xl font-semibold mb-4">Assignment 2: Interactive Quantitative Analysis</h2>
+      <p class="mb-4">Interactive HTML exported from Jupyter Notebook, including data cleaning, modeling, and visual analytics with scrollable outputs and embedded charts.</p>
+      <a href="assignment2.html" class="text-blue-600 underline">View Assignment →</a>
     </section>
 
-    <!-- WORK -->
-    <section id="work">
-      <h2 class="section-title">Course Assignments</h2>
+    
 
-      <div class="projects-grid">
-
-        <!-- A1 -->
-        <article class="project-card">
-          <h3 class="project-title">Assignment 1 – Storyboard</h3>
-          <p class="project-meta">Hand-drawn narrative structure</p>
-          <div class="project-footer">
-            <div class="project-tags-row"></div>
-            <a class="project-link" href="assignment1.pdf" target="_blank">View PDF ↗</a>
-          </div>
-        </article>
-
-        <!-- A2 -->
-        <article class="project-card">
-          <h3 class="project-title">Assignment 2 – Interactive Redesign</h3>
-          <p class="project-meta">Turning static visuals into interactive exploration</p>
-          <div class="project-footer">
-            <a class="project-link" href="assignment2.ipynb" target="_blank">View Notebook ↗</a>
-          </div>
-        </article>
-
-        <!-- A3 -->
-        <article class="project-card">
-          <h3 class="project-title">Assignment 3 – Infographic</h3>
-          <p class="project-meta">Single-page persuasive narrative</p>
-          <div class="project-footer">
-            <a class="project-link" href="assignment3.pdf" target="_blank">View PDF ↗</a>
-          </div>
-        </article>
-
-        <!-- A4 -->
-        <article class="project-card">
-          <h3 class="project-title">Assignment 4 – The Algorithm's Grasp</h3>
-          <p class="project-meta">Youth, AI, and affordability in the GTA</p>
-          <div class="project-footer">
-            <a class="project-link" href="assignment 4.pdf" target="_blank">View PDF ↗</a>
-          </div>
-        </article>
-
-      </div>
+    <!-- Assignment 3 -->
+    <section class="bg-white shadow-lg p-6 rounded-2xl">
+      <h2 class="text-2xl font-semibold mb-4">Assignment 3: Humanoid Robots: The Next Big Technology Wave</h2>
+      <p class="mb-4">Persuasive infographic using multi‑stage design iteration.</p>
+      <a href="assignment3.html" class="text-blue-600 underline">View Assignment →</a>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2 class="section-title">Contact</h2>
-      <div class="contact-card">
-        <div>
-          Email: <a href="mailto:chennan7909@gmail.com">chennan7909@gmail.com</a>
-        </div>
-        <div>
-          GitHub: <a href="https://github.com/chennan7909-cmd" target="_blank">github.com/chennan7909-cmd</a>
-        </div>
-      </div>
+    <!-- Assignment 4 -->
+    <section class="bg-white shadow-lg p-6 rounded-2xl">
+      <h2 class="text-2xl font-semibold mb-4">Assignment 4</h2>
+      <p class="mb-4">Human‑centered data story: theme selection, audience, and multi‑visual narrative.</p>
+      <a href="assignment4.html" class="text-blue-600 underline">View Assignment →</a>
     </section>
-
-    <footer>
-      © <script>document.write(new Date().getFullYear());</script> Nan Chen
-    </footer>
 
   </main>
+
+  <footer class="p-6 text-center text-gray-500 text-sm">
+    © 2025 Nan Chen. All Rights Reserved.
+  </footer>
 </body>
 </html>
