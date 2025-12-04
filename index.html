@@ -1,55 +1,597 @@
-<!-- Updated index.html with corrected Assignment 1 title -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nan Chen Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nan Chen - Data Visualization Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #3b82f6;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --hover-color: #1e40af;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 背景动画 */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.3;
+            background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        /* 导航栏 */
+        nav {
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 主要内容区域 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .avatar-container {
+            margin-bottom: 2rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 0 50px rgba(37, 99, 235, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--text-secondary);
+        }
+
+        /* 作品集部分 */
+        .portfolio {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .assignments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .assignment-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .assignment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .assignment-card:nth-child(1)::before { background: var(--gradient-1); }
+        .assignment-card:nth-child(2)::before { background: var(--gradient-2); }
+        .assignment-card:nth-child(3)::before { background: var(--gradient-3); }
+        .assignment-card:nth-child(4)::before { background: var(--gradient-4); }
+
+        .assignment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .assignment-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(139, 92, 246, 0.1));
+        }
+
+        .card-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-body {
+            padding: 2rem;
+            padding-top: 0;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .card-link:hover {
+            color: var(--secondary-color);
+            gap: 0.75rem;
+        }
+
+        .card-link svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card-link:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* 文件类型标签 */
+        .file-type {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .file-type.html {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 5rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .assignments-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            nav .container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* 加载动画 */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <header class="p-8 text-center">
-    <h1 class="text-4xl font-bold">Nan Chen</h1>
-    <p class="mt-2 text-lg">MBAI Student at Ontario Tech University<br />
-    Focusing on Data Visualization & Storytelling</p>
-  </header>
+<body>
+    <div class="bg-animation"></div>
 
-  <main class="max-w-4xl mx-auto p-6 space-y-10">
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container">
+            <h1>Nan Chen</h1>
+        </div>
+    </nav>
 
-    <!-- Assignment 1 -->
-    <section class="bg-white shadow-lg p-6 rounded-2xl">
-      <h2 class="text-2xl font-semibold mb-4">Assignment 1: Generation Crypto: Hope, Risk, and Reality</h2>
-      <p class="mb-4">Exploring Gen-Z’s relationship with cryptocurrency — motivations, fears, and how digital finance shapes youth identity.</p>
-      <a href="assignment1.html" class="text-blue-600 underline">View Assignment →</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="avatar-container">
+                <img src="avatar.jpg" alt="Nan Chen" class="avatar" onerror="this.style.display='none'">
+            </div>
+            <h1>Nan Chen</h1>
+            <p>Data Visualization & Analytics Portfolio</p>
+            <p style="font-size: 1rem; max-width: 700px;">
+                Showcasing innovative approaches to data storytelling through interactive visualizations, 
+                quantitative analysis workflows, and human-centered design
+            </p>
+            <div class="scroll-indicator">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </div>
     </section>
 
-    <!-- Assignment 2 -->
-    <section class="bg-white shadow-lg p-6 rounded-2xl">
-      <h2 class="text-2xl font-semibold mb-4">Assignment 2: Interactive Quantitative Analysis</h2>
-      <p class="mb-4">Interactive HTML exported from Jupyter Notebook, including data cleaning, modeling, and visual analytics with scrollable outputs and embedded charts.</p>
-      <a href="assignment2.html" class="text-blue-600 underline">View Assignment →</a>
+    <!-- Portfolio Section -->
+    <section class="portfolio container">
+        <h2 class="section-title">Course Assignments</h2>
+
+        <div class="assignments-grid">
+            <!-- Assignment 1 -->
+            <div class="assignment-card fade-in">
+                <span class="file-type">PDF</span>
+                <div class="card-header">
+                    <div class="card-number">1</div>
+                    <h3 class="card-title">Generation Crypto</h3>
+                    <p class="card-subtitle">Hope, Risk, and Reality</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Exploring Gen-Z's relationship with cryptocurrency — their motivations, fears, 
+                        and how digital finance shapes youth identity in the modern economy.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Cryptocurrency</span>
+                        <span class="tag">Gen-Z Research</span>
+                        <span class="tag">Data Story</span>
+                    </div>
+                    <a href="assignment1.pdf" class="card-link" target="_blank">
+                        View Assignment
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Assignment 2 -->
+            <div class="assignment-card fade-in">
+                <span class="file-type html">HTML</span>
+                <div class="card-header">
+                    <div class="card-number">2</div>
+                    <h3 class="card-title">Interactive Analysis</h3>
+                    <p class="card-subtitle">Quantitative Methods</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Interactive HTML dashboard exported from Jupyter Notebook, featuring comprehensive data cleaning, 
+                        statistical modeling, and dynamic visual analytics with embedded charts.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Jupyter</span>
+                        <span class="tag">Interactive Viz</span>
+                    </div>
+                    <a href="assignment_2.html" class="card-link" target="_blank">
+                        View Assignment
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Assignment 3 -->
+            <div class="assignment-card fade-in">
+                <span class="file-type">PDF</span>
+                <div class="card-header">
+                    <div class="card-number">3</div>
+                    <h3 class="card-title">Humanoid Robots</h3>
+                    <p class="card-subtitle">The Next Technology Wave</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Persuasive infographic exploring the rise of humanoid robotics, created through 
+                        multi-stage design iteration with focus on visual impact and data clarity.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Infographic</span>
+                        <span class="tag">Design Iteration</span>
+                        <span class="tag">Tech Trends</span>
+                    </div>
+                    <a href="assignment3.pdf" class="card-link" target="_blank">
+                        View Assignment
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Assignment 4 -->
+            <div class="assignment-card fade-in">
+                <span class="file-type">PDF</span>
+                <div class="card-header">
+                    <div class="card-number">4</div>
+                    <h3 class="card-title">Data Narrative</h3>
+                    <p class="card-subtitle">Human-Centered Storytelling</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Human-centered data story combining strategic theme selection, audience analysis, 
+                        and multi-visual narrative techniques to create compelling data-driven insights.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Storytelling</span>
+                        <span class="tag">Audience Analysis</span>
+                        <span class="tag">Visual Narrative</span>
+                    </div>
+                    <a href="assignment%204.pdf" class="card-link" target="_blank">
+                        View Assignment
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Nan Chen. All rights reserved.</p>
+        </div>
+    </footer>
 
-    <!-- Assignment 3 -->
-    <section class="bg-white shadow-lg p-6 rounded-2xl">
-      <h2 class="text-2xl font-semibold mb-4">Assignment 3: Humanoid Robots: The Next Big Technology Wave</h2>
-      <p class="mb-4">Persuasive infographic using multi‑stage design iteration.</p>
-      <a href="assignment3.html" class="text-blue-600 underline">View Assignment →</a>
-    </section>
+    <script>
+        // 添加平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-    <!-- Assignment 4 -->
-    <section class="bg-white shadow-lg p-6 rounded-2xl">
-      <h2 class="text-2xl font-semibold mb-4">Assignment 4</h2>
-      <p class="mb-4">Human‑centered data story: theme selection, audience, and multi‑visual narrative.</p>
-      <a href="assignment4.html" class="text-blue-600 underline">View Assignment →</a>
-    </section>
+        // 添加滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-  </main>
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-  <footer class="p-6 text-center text-gray-500 text-sm">
-    © 2025 Nan Chen. All Rights Reserved.
-  </footer>
+        document.querySelectorAll('.assignment-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // 点击卡片跳转
+        document.querySelectorAll('.assignment-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.closest('.card-link')) {
+                    const link = this.querySelector('.card-link');
+                    if (link) {
+                        window.open(link.href, '_blank');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
